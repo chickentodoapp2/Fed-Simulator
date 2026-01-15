@@ -77,6 +77,7 @@ export const generateEconomicEvent = async (
       const data = JSON.parse(response.text);
       return {
         id: `${year}-Q${quarter}-${Date.now()}`,
+        durationTicks: 8, // Default duration, will be randomized in App.tsx
         ...data,
       };
     }
@@ -91,6 +92,7 @@ export const generateEconomicEvent = async (
       source: "System Backup",
       impactModifiers: { inflation: 0.1, unemployment: 0, gdpGrowth: 0.1 },
       advisorComment: "Steady as she goes, Chair.",
+      durationTicks: 8,
     };
   }
 };

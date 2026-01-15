@@ -260,18 +260,18 @@ const App: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-auto lg:h-[550px]">
            {/* Event Feed */}
-           <div className="lg:col-span-3 h-full">
+           <div className="lg:col-span-3 h-[400px] lg:h-full">
               <EventDisplay event={gameState.currentEvent} loading={false} />
            </div>
 
            {/* Chart Area */}
-           <div className="lg:col-span-6 h-full relative">
-               {/* Overlay status if paused */}
+           <div className="lg:col-span-6 h-[400px] lg:h-full relative">
+               {/* Pause Indicator - Positioned top-right without blocking view */}
                {!gameState.isPlaying && !gameState.gameOver && (
-                   <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/50 backdrop-blur-[1px] rounded-lg">
-                       <div className="bg-white p-4 shadow-xl border border-slate-200 rounded-lg flex items-center gap-3">
-                           <Pause className="w-5 h-5 text-slate-400" />
-                           <span className="font-serif italic text-slate-600">Simulation Paused</span>
+                   <div className="absolute top-4 right-4 z-20 pointer-events-none">
+                       <div className="bg-white/95 px-4 py-2 shadow-academic border border-slate-200 rounded-full flex items-center gap-2">
+                           <Pause className="w-4 h-4 text-slate-500" />
+                           <span className="font-sans text-xs font-bold text-slate-600 uppercase tracking-wider">Simulation Paused</span>
                        </div>
                    </div>
                )}
@@ -279,11 +279,11 @@ const App: React.FC = () => {
            </div>
 
            {/* Controls */}
-           <div className="lg:col-span-3 h-full">
+           <div className="lg:col-span-3 h-auto lg:h-full">
               <FedToolsPanel 
                 tools={gameState.tools} 
                 onChange={handleToolsChange} 
-                disabled={gameState.gameOver} // Always enabled unless game over, allows adjusting while paused
+                disabled={gameState.gameOver} 
               />
            </div>
         </div>
