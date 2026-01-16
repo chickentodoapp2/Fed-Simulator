@@ -44,7 +44,7 @@ const FedToolsPanel: React.FC<FedToolsPanelProps> = ({ tools, onChange, disabled
         <div className="group">
           <div className="flex justify-between mb-2">
             <label className="text-sm font-semibold text-slate-700">Federal Funds Rate</label>
-            <span className="text-xl font-mono font-bold text-fed-blue">{tools.fedFundsRate.toFixed(2)}%</span>
+            <span className="text-xl font-mono font-bold text-amber-600">{tools.fedFundsRate.toFixed(2)}%</span>
           </div>
           <input
             type="range"
@@ -54,7 +54,7 @@ const FedToolsPanel: React.FC<FedToolsPanelProps> = ({ tools, onChange, disabled
             value={tools.fedFundsRate}
             onChange={handleRateChange}
             disabled={disabled}
-            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 disabled:opacity-50 hover:bg-slate-300 transition-colors"
+            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-600 disabled:opacity-50 hover:bg-slate-300 transition-colors"
           />
           <div className="flex justify-between mt-1 text-[10px] text-slate-400 font-mono">
             <span>0%</span>

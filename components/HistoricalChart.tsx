@@ -76,7 +76,8 @@ const HistoricalChart: React.FC<HistoricalChartProps> = ({ history }) => {
     timestamp: h.timestamp,
     Inflation: h.indicators.inflation,
     Unemployment: h.indicators.unemployment,
-    Rate: h.tools.fedFundsRate
+    GDP: h.indicators.gdpGrowth,
+    FFR: h.tools.fedFundsRate
   }));
 
   // Explicitly calculate ticks to force Recharts to render every single data point
@@ -101,6 +102,10 @@ const HistoricalChart: React.FC<HistoricalChartProps> = ({ history }) => {
                     <linearGradient id="colorUn" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#2563eb" stopOpacity={0.1}/>
                     <stop offset="95%" stopColor="#2563eb" stopOpacity={0}/>
+                    </linearGradient>
+                    <linearGradient id="colorGDP" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#16a34a" stopOpacity={0.1}/>
+                    <stop offset="95%" stopColor="#16a34a" stopOpacity={0}/>
                     </linearGradient>
                     <linearGradient id="colorRate" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#d97706" stopOpacity={0.05}/>
@@ -153,8 +158,19 @@ const HistoricalChart: React.FC<HistoricalChartProps> = ({ history }) => {
                     animationEasing="linear"
                 />
                 <Area 
+                    type="monotone" 
+                    dataKey="GDP" 
+                    stroke="#16a34a" 
+                    fillOpacity={1} 
+                    fill="url(#colorGDP)" 
+                    strokeWidth={2} 
+                    isAnimationActive={true}
+                    animationDuration={500}
+                    animationEasing="linear"
+                />
+                <Area 
                     type="stepAfter" 
-                    dataKey="Rate" 
+                    dataKey="FFR" 
                     stroke="#d97706" 
                     fillOpacity={1} 
                     fill="url(#colorRate)" 
