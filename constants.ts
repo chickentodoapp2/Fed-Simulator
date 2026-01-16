@@ -33,9 +33,10 @@ export const INITIAL_GAME_STATE: GameState = {
   currentEvent: null,
   eventQueue: [],
   isPlaying: false,
-  gameOver: false,
+  modalState: 'none',
   gameWon: false,
   eventActiveTicks: 0,
+  termNumber: 1,
 };
 
 // Continuous Simulation Constants

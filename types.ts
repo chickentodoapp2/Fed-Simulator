@@ -28,10 +28,12 @@ export interface GameEvent {
 
 export interface TurnHistoryItem {
   timestamp: number; // Unix timestamp or logical tick
-  label: string; // "Q1 2024" etc
+  label: string; // "2024 Q1" etc
   indicators: EconomicIndicators;
   tools: FedTools;
 }
+
+export type ModalState = 'none' | 'crash' | 'reelection_success' | 'reelection_fail' | 'retirement';
 
 export interface GameState {
   currentTick: number;
@@ -42,7 +44,8 @@ export interface GameState {
   currentEvent: GameEvent | null;
   eventQueue: GameEvent[]; // Pre-fetched events
   isPlaying: boolean;
-  gameOver: boolean;
+  modalState: ModalState;
   gameWon: boolean;
   eventActiveTicks: number; // How long current event has been active
+  termNumber: number; // 1 or 2
 }
